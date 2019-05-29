@@ -1,0 +1,78 @@
+<apex:page controller="WFPaymentMgrController" >
+    
+        <style>
+    .waitingSearchDiv {
+        background-color: #fbfbfb;
+        height: 100%;
+        opacity: 0.65;
+        width: 100%;
+    }
+
+    .waitingHolder {
+        top: 74.2px;
+        width: 91px;
+    }
+
+    .makeTextCenter th,.makeTextCenter td
+        {
+            text-align: center;
+        }
+
+    .lastColumnAlign{
+        width: 40%!important;
+        text-align: justify!important;
+    }
+
+    </style>
+   <apex:actionstatus id="statusLoader">
+        <apex:facet name="start">
+
+            <apex:outputPanel layout="block" styleClass="waitingSearchDiv" id="el_loading" >
+                <apex:outputPanel layout="block" styleClass="waitingHolder" >
+                    <apex:image id="theImage" styleClass="waitingImage" value="/img/loading.gif" alt="Please Wait..."/>
+                    <apex:outputPanel styleClass="waitingDescription">Please Wait.. </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>
+
+
+        </apex:facet>
+    </apex:actionstatus>
+
+        <apex:outputPanel >
+
+           
+                <apex:variable var="isRecentIntegrationsAvailable" value="{!recentWfIntegrations!=null && recentWfIntegrations.size>0}" />
+
+            <apex:form >
+
+            <apex:pageBlock title="Recent Integrations" >
+                 <apex:pageMessages id="wfInfoMsg" ></apex:pageMessages>
+
+                <apex:pageBlockTable value="{! recentWfIntegrations }" var="wfIntegration" id="wfTable" styleClass="makeTextCenter" rendered="{!isRecentIntegrationsAvailable}">
+                    <apex:column value="{! wfIntegration.startTimeUtc }">
+                        <apex:facet name="header">Start Time</apex:facet>
+                    </apex:column>
+                    <apex:column value="{! wfIntegration.endTimeUtc }">
+                        <apex:facet name="header">End Time</apex:facet>
+                    </apex:column>           
+                  <apex:column value="{! wfIntegration.filesProcessed }">
+                        <apex:facet name="header">Files Processed</apex:facet>
+                    </apex:column>           
+                    <apex:column value="{! wfIntegration.status }">
+                        <apex:facet name="header">Integration Status</apex:facet>
+                    </apex:column>
+                    <apex:column styleClass="lastColumnAlign"  value="{! wfIntegration.errorMsg }">
+                        <apex:facet name="header">Message</apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+                 <apex:pageBlockButtons location="top" >
+                     <apex:commandButton action="{!runWFIntegration}" id="testing" status="statusLoader" reRender="wfInfoMsg" value="Run Integration"/>
+                 </apex:pageBlockButtons> 
+
+            </apex:pageBlock>
+                              </apex:form>
+            
+        </apex:outputPanel>
+
+    
+</apex:page>

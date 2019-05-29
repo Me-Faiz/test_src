@@ -1,0 +1,34 @@
+<!-- <apex:page standardController="Account">
+    
+    <apex:pageBlock title="Account Summary" >
+        <apex:pageBlockSection>
+        	
+            Name: {! Account.Name } <br/>
+            Phone: {! Account.Phone } <br/>
+            Industry: {! Account.Industry } <br/>
+            Revenue: {! Account.AnnualRevenue } <br/>
+            Account owner: {! Account.Owner.Name } <br/>
+            Account owner: {! Account.Owner.Email } <br/>
+
+            
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+</apex:page> -->
+
+<apex:page standardController="Contact">
+    
+    <apex:pageBlock title="Contact Summary" >
+        <apex:pageBlockSection >
+        	
+            FirstName: {! Contact.FirstName } <br/>
+            LastName: {! Contact.LastName } <br/>
+            OwnerEmail: {! Contact.Owner.Email } <br/>
+           
+            
+
+            
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+</apex:page>

@@ -1,0 +1,25 @@
+<apex:page sidebar="false" showHeader="false">
+    <h1>Meow World</h1> 
+    <p>
+        this is blaaaahhh blaaaahhhh blaaahhhh
+    </p>
+    <apex:pageBlock title="A block title.">
+    	<apex:pageBlockSection title="A section title.">
+            <!--lol, i m 3 components deep, lmao. -->
+            <apex:pageBlockSectionItem >
+            	xyzzzzzz
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Another section title.">
+        	lol, i m 3 components deep, lmao.
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <apex:pageBlock title="Another block title.">
+    	<apex:pageBlockSection title="A section title.">
+        	lol, i m 3 components deep, lmao.
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >Haha</apex:pageBlockButtons>
+    </apex:pageBlock>
+    
+</apex:page>

@@ -1,0 +1,23 @@
+public class MyTestClass01 {
+
+    public static HttpResponse makePostCallout() {
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+      request.setEndpoint(' https://use4.dm-us.informaticacloud.com/saas/api/v2/activity/activityLog?taskId=001S8M0N00000000002I');
+        request.setMethod('POST');
+        request.setHeader('icSessionId','jhsSGDKXzEcexv3XLKBDay');
+        request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+        
+        HttpResponse response = http.send(request);
+        // Parse the JSON response
+        if (response.getStatusCode() != 201) {
+            System.debug('The status code returned was not expected: ' +
+                response.getStatusCode() + ' ' + response.getStatus());
+        } else {
+            System.debug(response.getBody());
+        }
+        return response;
+    }        
+   
+    
+}
